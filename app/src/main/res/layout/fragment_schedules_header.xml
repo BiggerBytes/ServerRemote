@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/flag_container">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET INFO THREAD STATE"
+        android:id="@+id/setinfothreadstate_btn"
+        style="@style/UiControl" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET REFRESH RATE"
+        android:id="@+id/setrefreshrate_btn"
+        style="@style/UiControl" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="READ INFO NOW"
+        android:id="@+id/readinfonow_btn"
+        style="@style/UiControl" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD CANCEL DUMMY"
+        android:id="@+id/addcanceldummy_btn"
+        style="@style/UiControl" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD SUBSTITUE DUMMY"
+        android:id="@+id/addsubdummy_btn"
+        style="@style/UiControl" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REMOVE ALL DUMMIES FROM ID"
+        android:id="@+id/removealldummies_btn"
+        style="@style/UiControl" />
+</LinearLayout>

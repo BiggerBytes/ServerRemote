@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res-auto"
+    xmlns:android1="http://schemas.android.com/apk/res/android">
+
+    <item android1:id="@+id/option_info_classes"
+        android1:titleCondensed="@string/info_classes_info"
+        android:showAsAction="always"
+        android1:visible="true"
+        android1:title="@string/info_classes_info"
+        android1:onClick="onClassesInformation"/>
+
+</menu>

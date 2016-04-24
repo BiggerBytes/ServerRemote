@@ -26,7 +26,8 @@ public class ByteArrayAsynchTasker extends AsyncTask<Void, Void, Integer> {
 
         try (ByteDataSocket dataSocket = new ByteDataSocket(data)){
 
-            dataSocket.send();
+            boolean success = dataSocket.send();
+            Log.d(TAG, "The message was " + (success ? "":"not ") + " sent");
 
         } catch (IOException e) {
             Log.e(TAG, "An error occured!", e.getCause());

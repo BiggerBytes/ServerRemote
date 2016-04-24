@@ -5,11 +5,14 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.Toolbar;
 
+import com.biggerbytes.serverremote.commandUtils.ClassesInformationDialogFragment;
 import com.biggerbytes.serverremote.commandfragments.ChooseHeaderFragment;
 import com.biggerbytes.serverremote.commandfragments.HeaderFragment;
 

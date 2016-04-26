@@ -1,4 +1,4 @@
-package com.biggerbytes.serverremote;
+package com.biggerbytes.serverremote.commandUtils;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

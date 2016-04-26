@@ -30,7 +30,6 @@ public class ByteDataSocket extends Socket{
         BufferedOutputStream out = new BufferedOutputStream(getOutputStream());
         try {
             out.write(data);
-            Log.d(TAG, "The command was sent successfully!");
             return true;
 
         } catch (Exception e) {

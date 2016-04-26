@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-import com.biggerbytes.serverremote.commandUtils.ClassesInformationDialogFragment;
 import com.biggerbytes.serverremote.commandfragments.ChooseHeaderFragment;
 import com.biggerbytes.serverremote.commandfragments.HeaderFragment;
 

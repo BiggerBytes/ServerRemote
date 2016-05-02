@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+
         FragmentManager fm = getFragmentManager();
         fm.beginTransaction().add(R.id.fragment_container, new ChooseHeaderFragment()).commit();
     }
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             ft.replace(R.id.fragment_container, cFragment);
             ft.commit();
         }
+
     }
 
     public void choseHeader(View v) {
@@ -63,5 +65,11 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getFragmentManager();
         ClassesInformationDialogFragment dialog = new ClassesInformationDialogFragment();
         dialog.show(fm, "CLASSES_INFO_DIALOG");
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) getFragmentManager().popBackStack();
+        else super.onBackPressed();
     }
 }

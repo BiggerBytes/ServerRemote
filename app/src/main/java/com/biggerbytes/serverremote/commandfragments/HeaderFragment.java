@@ -97,4 +97,8 @@ public abstract class HeaderFragment extends Fragment implements Button.OnClickL
     public abstract int getLayoutId();
     public abstract byte getCommand();
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

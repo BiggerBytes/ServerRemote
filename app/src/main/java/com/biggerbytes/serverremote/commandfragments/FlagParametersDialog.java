@@ -66,6 +66,8 @@ public abstract class FlagParametersDialog extends DialogFragment {
         Intent intent = new Intent();
         intent.putExtra(DataMaps.KEY_PARAMETERS, results);
 
+        views.clear();
+
         getTargetFragment().onActivityResult(0, 0, intent);
     }
 

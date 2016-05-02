@@ -10,6 +10,7 @@ import com.biggerbytes.serverremote.DataMaps;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.*;
 public class ByteDataSocket extends Socket{
 
@@ -27,9 +28,10 @@ public class ByteDataSocket extends Socket{
     }
 
     public boolean send() throws IOException{
-        BufferedOutputStream out = new BufferedOutputStream(getOutputStream());
+        ObjectOutputStream out = new ObjectOutputStream(getOutputStream());
         try {
-            out.write(data);
+            out.writeObject(69);
+            out.writeObject(data);
             return true;
 
         } catch (Exception e) {
@@ -37,6 +39,11 @@ public class ByteDataSocket extends Socket{
             return false;
 
         }
+        finally {
+            out.flush();
+            out.close();
+        }
+
     }
 
     public byte[] getData() {

@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public interface DataMaps {
 
-    String ipAddress = "ec2-52-28-93-13.eu-central-1.compute.amazonaws.com";
+    String ipAddress = "84.108.62.118"; //"ec2-52-28-93-13.eu-central-1.compute.amazonaws.com";
     int port = 25565;
     String KEY_HEADER = "HEADER_KEY", KEY_FLAG = "FLAG_KEY", KEY_PARAMETERS = "PARAMETERS_KEY";
 

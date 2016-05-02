@@ -6,6 +6,7 @@ import android.util.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 import static com.biggerbytes.serverremote.DataMaps.*;
 
@@ -72,13 +73,16 @@ public class CommandAssembler {
 
         //  Iterating and assembling the command via the pattern
         for (int i = 0; i < parameters.length && i < skeleton.length; i++) {
+            /*
             Log.d(TAG, "parameters[i] = " + parameters[i]);
             Log.d(TAG, "pattern[i].length = " + skeleton[i].length);
             Log.d(TAG, "parameters[i].getBytes(\"UTF-8\").length = " + parameters[i].getBytes("UTF-8").length);
-
+            */
 
             //  Via TypeTranslatorMap, we translate the parameter to byte[] in a correct representation of the data
             byte[] byteData = TypeTranslatorMap.translate(pattern.getParameterTypes()[i], parameters[i]);
+            Log.d(TAG, "" + Arrays.toString(byteData));
+
 
             //  Assemble the byte array, one byte at a time to make sure it fits
             for (int j = 0; j < skeleton[i].length && j < byteData.length; j++)
@@ -91,7 +95,14 @@ public class CommandAssembler {
                 if ((paramData != null) &&
                         paramData.length > 0) builder.write(paramData);
 
-            return builder.toByteArray();
+            byte[] arr =  builder.toByteArray();
+            builder.close();
+
+            data.removeExtra(KEY_HEADER);
+            data.removeExtra(KEY_FLAG);
+            data.removeExtra(KEY_PARAMETERS);
+
+            return arr;
         } catch (IOException e) {
             Log.e(TAG, e.getMessage(), e.fillInStackTrace());
             return new byte[]{};

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.biggerbytes.serverremote.R;
 
 /**
+ *  An abstract host of the fragment hosting the main layout, letting the user choose the header of the command.
  * Created by shach on 2/21/2016.
  */
 public class ChooseHeaderFragment extends Fragment {

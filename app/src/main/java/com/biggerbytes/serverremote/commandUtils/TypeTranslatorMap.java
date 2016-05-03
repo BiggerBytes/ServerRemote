@@ -10,11 +10,18 @@ import java.io.PrintStream;
 import java.util.Arrays;
 
 /**
+ * Will determine the method used to translate the parameter into byte[].<br>
+ * For instance - String "23" will be translated to [50, 51], <br>
+ *     while Integer 23 will be translated to [23].<br><br>
+ *
  * Created by shach on 4/24/2016.
  */
 public enum TypeTranslatorMap {
 
 
+    /**
+     * A TypeTranslator for the integer type.
+     */
     integerTranslator(Integer.class, new TypeTranslator() {
 
         private static final String TAG = "TypeTranslatorMap";
@@ -33,6 +40,9 @@ public enum TypeTranslatorMap {
     }
     ),
 
+    /**
+     * A TypeTranslator for the String type
+     */
     stringTranslator(String.class, new TypeTranslator() {
         private static final String TAG = "TypeTranslatorMap";
 
@@ -57,6 +67,11 @@ public enum TypeTranslatorMap {
         this.translator = translator;
     }
 
+    /**
+     * Will return the translator appropriate to the class
+     * @param klazz The Type of the translator.
+     * @return The appropriate TypeTranslator
+     */
     static TypeTranslator getTranslatorByClass(Class klazz) {
         for (TypeTranslatorMap map : TypeTranslatorMap.values())
             if (map.type == klazz) return map.translator;
@@ -68,6 +83,8 @@ public enum TypeTranslatorMap {
 
         return map == null ? new byte[]{} : map.translate(data);
     }
+
+
 
     static abstract class TypeTranslator {
         abstract byte[] translate(String s);

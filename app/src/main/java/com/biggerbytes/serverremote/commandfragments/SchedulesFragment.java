@@ -12,6 +12,7 @@ import com.biggerbytes.serverremote.commandUtils.CommandConstants;
 import com.biggerbytes.serverremote.R;
 
 /**
+ * An extension of HeaderFragment, for the 'Schedules' header.
  * Created by shach on 3/26/2016.
  */
 public class SchedulesFragment extends HeaderFragment {
@@ -22,8 +23,6 @@ public class SchedulesFragment extends HeaderFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = super.onCreateView(inflater, container, savedInstanceState);
-
-
         return v;
     }
 

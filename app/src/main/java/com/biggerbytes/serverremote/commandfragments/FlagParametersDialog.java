@@ -15,10 +15,11 @@ import com.biggerbytes.serverremote.DataMaps;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Created by shach on 3/29/2016.
+/*
+ * An Abstract class for filling in the parameters of the chosen flag of the command.
+ * Will be displayed upon choosing a flag.
  *
- * The FlagParametersDialog exists for taking the parameter input from the admin
+ * Created by shach on 3/29/2016.
  */
 public abstract class FlagParametersDialog extends DialogFragment {
     private static final String TAG = "FlagParametersDialog";
@@ -46,7 +47,8 @@ public abstract class FlagParametersDialog extends DialogFragment {
     }
 
     /**
-     *
+     *  Will be called upon completion in filling the parameters.
+     *  The data will be processed and sent to the hosting fragment for future processing.
      * @param viewsOnResults
      */
     public void sendResults(ArrayList<EditText> viewsOnResults) {

@@ -1,6 +1,7 @@
 package com.biggerbytes.serverremote.commandUtils;
 
 /**
+ * A dictionary of all headers/flags, and structure of parameters.
  * @author Avishay
  */
 public interface CommandConstants {

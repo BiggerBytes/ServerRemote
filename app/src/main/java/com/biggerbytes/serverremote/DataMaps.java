@@ -10,6 +10,9 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
+ * An Interface used for constants, as well as data maps used for<bR>
+ *     the implementation of the 'Command' design pattern.
+ *
  * Created by shach on 3/29/2016.
  */
 public interface DataMaps {
@@ -26,6 +29,8 @@ public interface DataMaps {
         put(R.id.addsubdummy_btn, R.layout.flag_adddummy);
         put(R.id.removealldummies_btn, R.layout.flag_removealldummiesfromid);
     }};
+
+
     Map<Integer, Byte> btnToByteId = new Hashtable<Integer, Byte>() {{
             put(R.id.setinfothreadstate_btn, SET_INFO_THREAD_STATE);
             put(R.id.setrefreshrate_btn, SET_REFRESH_RATE);
@@ -34,6 +39,7 @@ public interface DataMaps {
             put(R.id.addsubdummy_btn, ADD_SUBSTITUE_DUMMY);
             put(R.id.removealldummies_btn, REMOVE_ALL_DUMMIES_FROM_ID);
     }};
+
     Map<Integer, HeaderFragment> btnToHeaderFragment = new Hashtable<Integer, HeaderFragment>() {{
         put(R.id.server_header_btn, new ServerHeaderFragment());
         put(R.id.schedule_header_btn, new SchedulesFragment());

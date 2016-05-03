@@ -19,6 +19,9 @@ import com.biggerbytes.serverremote.commandfragments.HeaderFragment;
 
 
 /**
+ * The main activity of the app.
+ * Will host the fragments and layouts of the application.
+ *
  * Created by shach on 2/21/2016.
  */
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.fragment_container, new ChooseHeaderFragment()).commit();
     }
 
+    /**
+     * Will be called via the listener 'onClick'. when the user chooses the Header of the command.<br>
+     * Upon being called, will switch the fragment for a fragment hosting all the flags of the chosen command.<br>
+     *
+     * @param cFragment The fragment that will be switched to.
+     */
+
     private void switchHeaderFragment(HeaderFragment cFragment) {
         FragmentManager fm = getFragmentManager();
         Log.d(TAG, "Header chosen");
@@ -49,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * A listener for the button on the main layout.
+     * Said buttons represent the Header of the commands.
+     * @param v The view that initiated the listener.
+     */
     public void choseHeader(View v) {
         switchHeaderFragment(DataMaps.btnToHeaderFragment.get(v.getId()));
     }
@@ -61,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * A listener for the 'Class ID's' options in the options menu.
+     * Will open an AlertDialog with all the Class ID's of all the classes.
+     * @param item
+     */
     public void onClassesInformation(MenuItem item) {
         FragmentManager fm = getFragmentManager();
         ClassesInformationDialogFragment dialog = new ClassesInformationDialogFragment();

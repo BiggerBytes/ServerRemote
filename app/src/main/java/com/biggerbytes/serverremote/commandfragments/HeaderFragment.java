@@ -21,6 +21,8 @@ import java.io.IOException;
 import static com.biggerbytes.serverremote.DataMaps.*;
 
 /**
+ * An abstract class of a fragment containing all the flags of the chosen header.
+ *
  * Created by shach on 2/21/2016.
  */
 public abstract class HeaderFragment extends Fragment implements Button.OnClickListener {
@@ -38,6 +40,12 @@ public abstract class HeaderFragment extends Fragment implements Button.OnClickL
         return v;
     }
 
+    /**
+     * Will wire all the Buttons in the layout to a listener via code, since
+     * the class is abstract and needs to account to all possible headers, as well to
+     * future flags to come.
+     * @param v The root viewgroup of the layout
+     */
     private void wireViews(ViewGroup v) {
 
         //  Iterating through all the inflated to the layout views.
@@ -54,10 +62,16 @@ public abstract class HeaderFragment extends Fragment implements Button.OnClickL
         }
     }
 
+    /**
+     * A listener to all button in the layout.
+     * Will trigger a FlagParametersDialog in order to let the user fill in the parameters for the flag.
+     * @param v The view that triggered the listener
+     */
     @Override
     public void onClick(final View v) {
         //  Setting the chosen flag
         flag = DataMaps.btnToByteId.get(v.getId());
+
 
 
         FlagParametersDialog dialog = new FlagParametersDialog() {
@@ -71,6 +85,11 @@ public abstract class HeaderFragment extends Fragment implements Button.OnClickL
     }
 
 
+    /**
+     *Will be called via FlagParametersDialog upon completing filling the parameters.
+     * The Data will the sent back the HeaderFragment for Processing, as well as for sending it to the hosting server.
+     * @param data An intent hosting all the data the user checked/filled
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         final byte DEF = 0;
@@ -78,14 +97,17 @@ public abstract class HeaderFragment extends Fragment implements Button.OnClickL
         data.putExtra(KEY_HEADER, getCommand());
         data.putExtra(KEY_FLAG, flag);
 
+        //  CommandAssembler will process the data from string array to byte array.
         CommandAssembler assembler = new CommandAssembler(
                 data.getByteExtra(KEY_HEADER, DEF),
                 data.getByteExtra(KEY_FLAG, DEF),
                 data);
 
         try {
+            //  Will attempt to send the data to the hosting server.
             ByteArrayAsynchTasker tasker = new ByteArrayAsynchTasker(assembler.assemble());
             tasker.execute();
+            //  Upon success in sending the data to the server - Will notify the user
             Toast.makeText(HeaderFragment.this.getActivity(), "The Command was send!", Toast.LENGTH_SHORT).show();
 
         } catch (Exception c) {

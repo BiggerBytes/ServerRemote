@@ -52,17 +52,32 @@ public class CommandAssembler {
         }
     }
 
+    /**
+     * Will assemble the command in this structure:<br>
+     * 1) 69 - The triggering value, for the server to be notified to process the following command<br>
+     * 2) {HEADER} - First category of the command. Will differentiate between operations on the server itself and operations on the data hosted by the server.<br>
+     * 3) {FLAG} - Second category of the command. Will determine the specific operation wished to be performed. Will determine the following parameters to be filled. <br>
+     * 4) {PARAMETER} - Is the data that needs to accompany the flag in order to initiate the operation. <br><br>
+     * @return The data processed for server to read in byte[].
+     */
     public byte[] assemble() {
-        byte arr[] = new byte[2 + param.length];
-        arr[0] = header;
-        arr[1] = flag;
-        for (int i = 2; i < arr.length; i++) arr[i] = param[i - 2];
+        byte arr[] = new byte[3 + param.length];
+        arr[0] = (byte) 69;
+        arr[1] = header;
+        arr[2] = flag;
+        for (int i = 3; i < arr.length; i++) arr[i] = param[i - 3];
 
 
         return arr;
     }
 
 
+    /**
+     * A method used to specifically process the parameters
+     * @param data An intent containing all the data of the command.
+     * @return  A byte[] of the parameters processed and ordered
+     * @throws UnsupportedEncodingException
+     */
     protected byte[] intentDataToByteArray(Intent data) throws UnsupportedEncodingException {
         //  Using ParameterPattern to identify the structure of the command
         ParameterPattern pattern = ParameterPattern.findPatternsWithFlag(data.getByteExtra(KEY_FLAG, (byte) 0));
@@ -95,7 +110,7 @@ public class CommandAssembler {
                 if ((paramData != null) &&
                         paramData.length > 0) builder.write(paramData);
 
-            byte[] arr =  builder.toByteArray();
+            byte[] arr = builder.toByteArray();
             builder.close();
 
             data.removeExtra(KEY_HEADER);

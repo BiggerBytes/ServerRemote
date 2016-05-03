@@ -6,6 +6,7 @@ import com.biggerbytes.serverremote.commandUtils.CommandConstants;
 import com.biggerbytes.serverremote.R;
 
 /**
+ * An extension of HeaderFragment, for the 'Server' header.
  * Created by shach on 2/21/2016.
  */
 public class ServerHeaderFragment extends HeaderFragment {

@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.biggerbytes.serverremote.R;
 
 /**
+ * Is an AlertDialog that will present the admin all the classes and corresponding ID's, for future operations.
+ *
  * Created by shach on 4/22/2016.
  */
 public class ClassesInformationDialogFragment extends DialogFragment {

@@ -4,7 +4,7 @@ package com.biggerbytes.serverremote.commandUtils;
  * Created by shach on 4/22/2016.
  *
  * This enum contains the value of each flag, as well as a skeleton
- * for it's parameters.
+ * for it's parameters. Will be used to assemble the parameters correctly.
  */
 public enum ParameterPattern {
 
